@@ -11,8 +11,8 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - touch .env
-      - echo "TEST='${TEST}'" >> .env
+      - touch env
+      - echo "TEST='${TEST}'" >> env
       
 
   post_build:
