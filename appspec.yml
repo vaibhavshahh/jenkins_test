@@ -5,11 +5,11 @@ files:
     destination: /home/ubuntu/portal/
 hooks:
   AfterInstall:
-    - location: scripts/AfterInstallHook.sh
+    - location: AfterInstallHook.sh
       timeout: 300
       runas: root
 
   BeforeInstall:
-    - location: scripts/BeforeInstallHook.sh
+    - location: BeforeInstallHook.sh
       timeout: 300
       runas: root
