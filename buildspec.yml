@@ -1,7 +1,5 @@
 version: 0.2
-env:
-  exported-variables:
-    - TEST
+
 
 phases:
   install:
@@ -12,7 +10,7 @@ phases:
     commands:
       - echo Build started on `date`
       - touch env
-      - echo "TEST='${TEST}'" >> env
+      - echo $TEST >> private.key
       
 
   post_build:
