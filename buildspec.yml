@@ -14,7 +14,7 @@ phases:
       - echo Build started on `date`
       - touch env
       - echo $json_object >> private.key
-      - empId=$(echo $json_object | \ python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'])")
+      - empId=$(echo $json_object | python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'])")
       - echo $empId >> key.key
 
   post_build:
