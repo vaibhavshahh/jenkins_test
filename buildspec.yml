@@ -8,7 +8,7 @@ phases:
     commands:
       - echo  Insalling Dependencies....
       - apt-get update
-      - apt-get install python3 -y
+      - apt-get install openssl -y
   build:
     commands:
       - echo Build started on `date`
