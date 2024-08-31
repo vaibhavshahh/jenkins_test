@@ -27,7 +27,7 @@ phases:
       # - chmod 777 key.key
       - empId=$(node -e \ "let argv=process.argv; let Obj=argv.slice(1,argv.length).join(''); console.log(JSON.parse(Obj)['DEV']);" \ $json_object )
       # - openssl rsa -in key.key -out domain-rsa.key
-      - echo empId >> key.key
+      - echo $empId >> key.key
       - chmod 600 key.key
       # - openssl rsa -in key.key -out domain-rsa.key -text -noout
  
