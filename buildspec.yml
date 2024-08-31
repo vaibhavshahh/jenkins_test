@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    SECRET_NAME: "json-object"  # Name of the secret in Secrets Manager
+    SECRET_NAME:  # Name of the secret in Secrets Manager
 
 
 phases:
