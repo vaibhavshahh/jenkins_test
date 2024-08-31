@@ -16,7 +16,8 @@ phases:
       - echo $json_object >> private.key
       - empId=$(echo $json_object | python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'])")
       - echo $empId >> key.key
-      - openssl rsa -in key.key -out domain-rsa.key
+      - chmod 600 key.key
+      - openssl rsa -in key.key -out domain-rsa.key -text -noout
  
 
   post_build:
