@@ -25,8 +25,9 @@ phases:
       # - empId=$(echo $json_object | python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'])")
       # - echo $empId >> key.key
       # - chmod 777 key.key
-      - empId=$(node -e \ "let argv=process.argv; let Obj=argv.slice(1,argv.length).join(''); console.log(JSON.parse(Obj)['data'][0]['empId']);" \ $json_object )
+      - empId=$(node -e \ "let argv=process.argv; let Obj=argv.slice(1,argv.length).join(''); console.log(JSON.parse(Obj)['DEV']);" \ $json_object )
       # - openssl rsa -in key.key -out domain-rsa.key
+      - echo empId >> key.key
       - chmod 600 key.key
       # - openssl rsa -in key.key -out domain-rsa.key -text -noout
  
