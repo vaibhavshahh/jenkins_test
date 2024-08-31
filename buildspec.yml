@@ -6,6 +6,7 @@ phases:
     commands:
       - echo  Insalling Dependencies....
       - apt-get update
+      - apt-get install python3
   build:
     commands:
       - echo Build started on `date`
