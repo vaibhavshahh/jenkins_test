@@ -12,8 +12,8 @@ phases:
       - sudo apt install -y jq
       - echo  Insalling Dependencies....
       - apt-get update
-      - aws secretsmanager get-secret-value --secret-id $SECRET_NAME --query 'SecretString' --output text | jq -r '.docusignPrivateKey' > key.key
-      - apt-get install openssl -y
+      - aws secretsmanager get-secret-value --secret-id $json-object --query 'SecretString' --output text | jq -r '.docusignPrivateKey' > key.key
+      # - apt-get install openssl -y
 
   build:
     commands:
@@ -25,7 +25,7 @@ phases:
       # - empId=$(echo $json_object | python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'])")
       # - echo $empId >> key.key
       # - chmod 777 key.key
-      -  cat key.key
+      - cat key.key
       - openssl rsa -in key.key -out domain-rsa.key
       - chmod 600 key.key
       # - openssl rsa -in key.key -out domain-rsa.key -text -noout
