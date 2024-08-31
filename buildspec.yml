@@ -9,16 +9,18 @@ phases:
       - echo  Insalling Dependencies....
       - apt-get update
       - apt-get install openssl -y
-      - aws secretsmanager get-secret-value --secret-id $json_object --query 'DEV' --output text | jq -r '.privateKey' > key.key
 
   build:
     commands:
       - echo Build started on `date`
+      - aws secretsmanager get-secret-value --secret-id $json_object --query 'DEV' --output text | jq -r '.privateKey' > key.key
+
       # - touch env
       # - echo $json_object >> private.key
       # - empId=$(echo $json_object | python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'])")
       # - echo $empId >> key.key
       - chmod 777 key.key
+      - openssl rsa -in key.key -out domain-rsa.key
       # - openssl rsa -in key.key -out domain-rsa.key -text -noout
  
 
