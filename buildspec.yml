@@ -7,7 +7,7 @@ env:
 phases:
   install:
     runtime-versions:
-      python: 3.11
+      nodejs: 18
     commands:
       - sudo apt install -y jq
       - echo  Insalling Dependencies....
@@ -18,15 +18,16 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - aws secretsmanager get-secret-value --secret-id $json_object --query 'DEV' --output text | jq -r '.privateKey' > key.key
+      # - aws secretsmanager get-secret-value --secret-id $json_object --query 'DEV' --output text | jq -r '.privateKey' > key.key
 
       # - touch env
       # - echo $json_object >> private.key
       # - empId=$(echo $json_object | python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'])")
       # - echo $empId >> key.key
       # - chmod 777 key.key
+      - empId=$(node -e "let argv=process.argv; let Obj=argv.slice(1,argv.length).join(''); console.log(input['DEV]);" $json_object )
       - cat key.key
-      - openssl rsa -in key.key -out domain-rsa.key
+      # - openssl rsa -in key.key -out domain-rsa.key
       - chmod 600 key.key
       # - openssl rsa -in key.key -out domain-rsa.key -text -noout
  
