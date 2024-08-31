@@ -7,7 +7,7 @@ env:
 phases:
   install:
     runtime-versions:
-      nodejs: 18
+      python: 3.11
     commands:
       - sudo apt install -y jq
       - echo  Insalling Dependencies....
@@ -22,10 +22,10 @@ phases:
 
       # - touch env
       # - echo $json_object >> private.key
-      # - empId=$(echo $json_object | python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'])")
+      - empId=$(echo $json_object | python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'])")
       # - echo $empId >> key.key
       # - chmod 777 key.key
-      - empId=$(node -e \ "let argv=process.argv; let Obj=argv.slice(1,argv.length).join(''); console.log(JSON.parse(Obj)['DEV']);" \ $json_object )
+      # - empId=$(node -e \ "let argv=process.argv; let Obj=argv.slice(1,argv.length).join(''); console.log(JSON.parse(Obj)['DEV']);" \ $json_object )
       # - openssl rsa -in key.key -out domain-rsa.key
       - echo $empId >> key.key
       - chmod 600 key.key
