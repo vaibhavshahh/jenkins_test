@@ -18,7 +18,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - aws secretsmanager get-secret-value --secret-id $json_object --query 'DEV' --output text | jq -r '.privateKey' > key.key
+      - aws secretsmanager get-secret-value --secret-id $json-object --query 'DEV' --output text | jq -r '.privateKey' > key.key
 
       # - touch env
       # - echo $json_object >> private.key
