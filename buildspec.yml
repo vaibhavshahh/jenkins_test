@@ -36,7 +36,7 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - openssl rsa -in docusign.key -out domain-docusign.key
+      - openssl rsa -in key.key -out domain-docusign.key
 
  
 
