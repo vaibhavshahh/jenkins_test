@@ -9,7 +9,7 @@ phases:
       - echo  Insalling Dependencies....
       - apt-get update
       - apt-get install openssl -y
-      - aws secretsmanager get-secret-value --secret-id $json_object --query 'DEV' --output text > key.key
+      - aws secretsmanager get-secret-value --secret-id $SECRET_NAME --query 'SecretString' --output text | jq -r '.privateKey' > key.key
 
   build:
     commands:
