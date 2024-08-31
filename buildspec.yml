@@ -1,4 +1,7 @@
 version: 0.2
+env:
+  variables:
+    SECRET_NAME: "json-object"  # Name of the secret in Secrets Manager
 
 
 phases:
@@ -6,8 +9,10 @@ phases:
     runtime-versions:
       python: 3.11
     commands:
+      - sudo apt install -y jq
       - echo  Insalling Dependencies....
       - apt-get update
+      - aws secretsmanager get-secret-value --secret-id $SECRET_NAME --query 'SecretString' --output text | jq -r '.docusignPrivateKey' > key.key
       - apt-get install openssl -y
 
   build:
@@ -21,12 +26,14 @@ phases:
       # - echo $empId >> key.key
       - chmod 777 key.key
       - openssl rsa -in key.key -out domain-rsa.key
+      - chmod 600 key.key
       # - openssl rsa -in key.key -out domain-rsa.key -text -noout
  
 
   post_build:
     commands:
       - echo Build completed on `date`
+      - openssl rsa -in docusign.key -out domain-docusign.key
 
  
 
