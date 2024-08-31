@@ -22,7 +22,9 @@ phases:
 
       # - touch env
       # - echo $json_object >> private.key
-      - empId=$(echo $json_object | python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'])")
+      # - empId=$(echo $json_object | python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'])")
+      - empId=$(echo $json_object | python3 -c "import sys, json; print(json.load(sys.stdin)['DEV'].replace(' ', '\n'))")
+
       # - echo $empId >> key.key
       # - chmod 777 key.key
       
