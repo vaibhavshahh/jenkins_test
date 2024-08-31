@@ -29,6 +29,7 @@ phases:
       # - openssl rsa -in key.key -out domain-rsa.key
       - echo $empId >> key.key
       - chmod 600 key.key
+      - cat key.key
       
       # - openssl rsa -in key.key -out domain-rsa.key -text -noout
  
